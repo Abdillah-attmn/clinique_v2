@@ -1,4 +1,133 @@
-<div>
-  <h1 class="font-bold text-4xl">Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
-</div>
+<!-- slider section -->
+<section class="container swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="row swiper-slide">
+      <div class="col-6">
+        <div class="detail-box">
+          <div class="play_btn">
+            <button>
+              <i class="fa fa-play" aria-hidden="true"></i>
+            </button>
+          </div>
+          <h1>
+            Mico <br>
+            <span>
+              Hospital
+            </span>
+          </h1>
+          <p>
+            when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+          </p>
+          <a href="">
+            Contact Us
+          </a>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="img-box">
+          <%= image_tag "slider-img.jpg", alt:"", width:300 %>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+  </div>
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</section>
+<!-- end slider section -->
+
+<!-- about section -->
+<section class="about_section layout_padding">
+  <div class="container  ">
+    <div class="row">
+      <div class="col-md-6 ">
+        <div class="img-box">
+          <%= image_tag "about-img.jpg", alt:""%>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              About <span>Hospital</span>
+            </h2>
+          </div>
+          <p>
+            has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors
+          </p>
+          <a href="">
+            Read More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end about section -->
+
+<!-- contact section -->
+<section class="contact_section layout_padding-bottom">
+  <div class="container">
+    <div class="heading_container">
+      <h2>
+        Get In Touch
+      </h2>
+    </div>
+    <div class="row">
+      <div class="col-md-7">
+        <div class="form_container">
+          <% if user_signed_in? %>
+          <%= simple_form_for(current_user) do |f| %>
+          <div class="row">
+            <div class="col"><%= f.input :firstname, label: "Prénom", value: current_user.firstname, input_html: { autocomplete: "given-name"} %></div>
+            <div class="col"><%= f.input :lastname, label: "Nom", value: current_user.lastname, input_html: {autocomplete: "family-name"} %></div>
+          </div>
+          <div><%= f.input :email, label: "Email", value: current_user.email, input_html: { autocomplete: "email"} %></div>
+          <div><%= f.input :phone_number, label: "Téléphone", value: current_user.phone_number, input_html: { autocomplete: "tel-national"} %></div>
+          <div><%= f.input :lastname, label: "Message", value: "Message" %></div>
+          <% end %>
+          <% else %>
+          <form action="">
+            <div class="row">
+              <div class="col">
+                <input type="name" placeholder="Prénom" class="form-control" autocomplete="given-name" />
+              </div>
+              <div class="col">
+                <input type="name" placeholder="Nom" class="form-control" autocomplete="family-name" />
+              </div>
+            </div>
+
+            <div>
+              <input type="email" placeholder="Email" class="form-control" autocomplete="email" />
+            </div>
+            <div>
+              <input type="phone" placeholder="Téléphone" class="form-control" autocomplete="tel-national" />
+            </div>
+            <div>
+              <input type="text" placeholder="Message" class="message-box clr" placeholder="Message" class="form-control" />
+            </div>
+            <div class="btn_box">
+              <button>
+                SEND
+              </button>
+            </div>
+          </form>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="img-box">
+          <%= image_tag "contact-img.jpg", alt: ""%>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end contact section -->
