@@ -1,0 +1,55 @@
+<div class="bg-white">
+  <div class="container p-3">
+    <div class="row justify-content-center clr">
+      <div class="border rounded col-12 col-sm-10 col-md-8 col-lg-5 p-5"><h2 class="text-center mb-30">Avez-vous déja un compte ?</h2>
+
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <div class="row mb-30">
+              <div class="col-4"><%= f.label "Email" %></div>
+              <div class="col-8">
+                <%= f.input :email,
+                            label: false,
+                            required: true,
+                            autofocus: true,
+                            input_html: { class:"form-control", autocomplete: "email" }%>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-lg-4 col-sm-3"><%= f.label 'Mot de passe' %></div>
+              <div class="col-lg-8 col-sm-9">
+                <%= f.input :password,
+                            label: false,
+                            required: true,
+                            input_html: {  class: "form-control w-100", autocomplete: "password" } %>
+              </div>
+            </div>
+            <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
+          </div>
+
+          <%= render "devise/shared/links" %>
+
+          <div class="d-flex justify-content-center">
+            <div class="form-actions">
+              <%= f.button :submit, "Se Connecter", class:"btn btn-clr py-3 px-4" %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+      <div class="border rounded col-12 col-sm-10 col-md-8 col-lg-5 p-5">
+
+        <div><h2 class="text-center mb-20">Ne perdez plus de temps et inscrivez-vous!</h2>
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <div class="row mb-20">
+              <%= link_to "Docteur", new_doctor_path, class: "btn btn-clr-dr py-2" %>
+            </div>
+            <div class="row">
+              <%= link_to "Patient", new_patient_path, class: "btn btn-clr-patient py-2"  %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
