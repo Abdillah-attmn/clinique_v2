@@ -1,9 +1,19 @@
 <!-- slider section -->
-<section class="container swiper-container">
+<section class="swiper-container">
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
-    <div class="row swiper-slide">
+    <div class="swiper-slide">
+        <div class="img-box">
+          <%= image_tag "slider-img.jpg", alt:"", width:400 %>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="img-box">
+          <%= image_tag "contact-img.jpg", alt:"", width:400 %>
+        </div>
+    </div>
+    <div class="swiper-slide">
       <div class="col-6">
         <div class="detail-box">
           <div class="play_btn">
@@ -18,7 +28,7 @@
             </span>
           </h1>
           <p>
-            when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+            When looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
           </p>
           <a href="">
             Contact Us
@@ -27,12 +37,10 @@
       </div>
       <div class="col-6">
         <div class="img-box">
-          <%= image_tag "slider-img.jpg", alt:"", width:300 %>
+          <%= image_tag "about-img.jpg", alt:"", width:400 %>
         </div>
       </div>
     </div>
-    <div class="swiper-slide">Slide 2</div>
-    <div class="swiper-slide">Slide 3</div>
   </div>
   <!-- If we need navigation buttons -->
   <div class="swiper-button-prev"></div>
