@@ -11,12 +11,20 @@ export { application }
 // Swiper-Slider
 const swiper = new Swiper('.swiper', {
   // Optional parameters
-  direction: 'vertical',
+  direction: 'horizontal',
   loop: true,
+  slidesPerView: 2,
+  slidesPerGroup: 2,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+
 
   // If we need pagination
   pagination: {
     el: '.swiper-pagination',
+    clickable: true,
   },
 
   // Navigation arrows

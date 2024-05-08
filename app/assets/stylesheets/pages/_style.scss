@@ -96,8 +96,9 @@ a:focus {
 
 /* slider section */
 
-.swiper-container {
-  // height: 500px;
+.swiper {
+  width: auto;
+  height: 500px;
   .swiper-slide {
     display: flex;
     justify-content: center;

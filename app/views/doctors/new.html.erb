@@ -17,7 +17,7 @@
 
           <div class="form-inputs">
 
-            <%= f.fields_for :user_attributes, @doctor.user||User.new do |u| %>
+            <%= f.fields_for :user_attributes, @doctor.user || User.new do |u| %>
               <div class="row mb-3">
                 <div class="col-6">
                   <%= u.label "Prénom" %>
@@ -56,9 +56,10 @@
                 </div>
                 <div class="col-8">
                   <%= u.text_field :password,
-                              label: false,
-                              hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                              autocomplete: "new-password", class:"form-control" %>
+                                    type: "password",
+                                    label: false,
+                                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                                    autocomplete: "new-password", class:"form-control" %>
                 </div>
               </div>
               <div class="row mb-2">
@@ -68,8 +69,9 @@
                 </div>
                 <div class="col-8">
                   <%= u.text_field :password_confirmation,
-                              label: false,
-                              autocomplete: "new-password", class:"form-control" %>
+                                    type: "password",
+                                    label: false,
+                                    autocomplete: "new-password", class:"form-control" %>
                 </div>
               </div>
               <div class="row mb-2">
@@ -92,10 +94,10 @@
                 <abbr title="required">*</abbr>
               </div>
               <div class="col-8">
-                <%= f.text_field :speciality,
-                            label: false,
-                            autofocus: true,
-                            class:"form-control" %>
+                <%= f.select  :speciality, Doctor::SPECIALITY,
+                              label: false,
+                              autofocus: true,
+                              class:"form-control" %>
               </div>
             </div>
           </div>

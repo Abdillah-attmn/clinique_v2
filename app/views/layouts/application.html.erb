@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>CliniqueV2</title>
+    <%= favicon_link_tag 'logo.png' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -19,8 +20,12 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
-    <%= yield %>
-    <%= render "shared/flashes" %>
+    <header>
+      <%= render "shared/flashes" %>
+      <%= render "shared/navbar" %>
+    </header>
+    <main class="flex-grow">
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </main>
   </body>
 </html>

@@ -1,7 +1,7 @@
 class DoctorsController < ApplicationController
   before_action :authenticate_user!, :authenticate_doctor, except: %i[index new create show]
   before_action :new_registration, only: %i[new create]
-  before_action :set_doctor, only: %i[show]
+  before_action :set_doctor, only: %i[show edit update]
 
   def index
     @doctors = Doctor.all
@@ -11,6 +11,7 @@ class DoctorsController < ApplicationController
 
   def new
     @doctor = Doctor.new
+    @doctor.build_user
   end
 
   def create
@@ -20,6 +21,16 @@ class DoctorsController < ApplicationController
       redirect_to @doctor, notice: 'Votre compte a bien été créé.'
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @doctor.save!
+      redirect_to @doctor, notice: 'Votre compte a bien été mis à jour.'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

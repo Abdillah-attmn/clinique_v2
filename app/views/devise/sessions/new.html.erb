@@ -42,11 +42,9 @@
         <div><h2 class="text-center mb-20">Ne perdez plus de temps et inscrivez-vous!</h2>
           <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
             <div class="row mb-20">
-              <%= turbo_frame_tag dom_id(post) do %>
-                <%= link_to "Docteur", new_doctor_path, class: "btn btn-clr-dr py-2" %>
-              <% end %>
+              <%= link_to "Docteur", new_doctor_path, class: "btn btn-clr-dr py-2" %>
             </div>
-            <div class="row">
+            <div class="row mb-20">
               <%= link_to "Patient", new_patient_path, class: "btn btn-clr-patient py-2"  %>
             </div>
           <% end %>
