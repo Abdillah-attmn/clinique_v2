@@ -18,7 +18,7 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save!
-      redirect_to @doctor, notice: 'Votre compte a bien été créé.'
+      redirect_to new_user_session_path, notice: 'Votre compte a bien été créé.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,8 @@ class DoctorsController < ApplicationController
   def edit; end
 
   def update
-    if @doctor.save!
+    if @doctor.update(doctor_params)
+      @doctor.user = @doctor.user || User.new(params[:user])
       redirect_to @doctor, notice: 'Votre compte a bien été mis à jour.'
     else
       render :edit, status: :unprocessable_entity
@@ -41,7 +42,10 @@ class DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params.require(:doctor).permit(:speciality)
+    params.require(:doctor).permit(
+      :speciality,
+      user_attributes: [:firstname, :lastname, :phone_number, :password, :email]
+      )
   end
 
   def authenticate_doctor

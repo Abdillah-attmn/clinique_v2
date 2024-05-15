@@ -2,26 +2,19 @@
   <div class='container p-3'>
     <div class='row justify-content-center'>
       <div class= "border rounded col-12 col-sm-10 col-md-8 col-lg-5 clr-dr">
-        <%= form_for @doctor do |f| %> <h2 class="text-center m-3">Inscription d'un docteur</h2>
-          <% if @doctor.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
-
-              <ul>
-              <% @doctor.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
+        <%= simple_form_for (@doctor) do |f| %> <h2 class="text-center m-3">Inscription d'un docteur</h2>
+          <%= f.error_notification %>
 
           <div class="form-inputs">
 
-            <%= f.fields_for :user_attributes, @doctor.user || User.new do |u| %>
+            <%= f.simple_fields_for :user_attributes do |u| %>
+              <%= u.error_notification %>
+
               <div class="row mb-3">
                 <div class="col-6">
                   <%= u.label "Prénom" %>
-                  <%= u.text_field :firstname,
+                  <%= u.input :firstname,
+                              label: false,
                               required: true,
                               autofocus: true,
                               autocomplete: "given-name",
@@ -29,7 +22,8 @@
                 </div>
                 <div class="col-6">
                   <%= u.label "Nom" %>
-                  <%= u.text_field :lastname,
+                  <%= u.input :lastname,
+                              label: false,
                               required: true,
                               autofocus: true,
                               autocomplete: "family-name",
@@ -39,10 +33,9 @@
               <div class="row mb-2">
                 <div class="col-4">
                   <%= u.label "Email" %>
-                  <abbr title="required">*</abbr>
                 </div>
                 <div class="col-8">
-                  <%= u.text_field :email,
+                  <%= u.input :email,
                               label: false,
                               required: true,
                               autofocus: true,
@@ -52,10 +45,9 @@
               <div class="row mb-2">
                 <div class="col-4">
                   <%= u.label "Mot de passe" %>
-                  <abbr title="required">*</abbr>
                 </div>
                 <div class="col-8">
-                  <%= u.text_field :password,
+                  <%= u.input :password,
                                     type: "password",
                                     label: false,
                                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -65,10 +57,9 @@
               <div class="row mb-2">
                 <div class="col-4">
                   <%= u.label "Confirmation du Mot de passe" %>
-                  <abbr title="required">*</abbr>
                 </div>
                 <div class="col-8">
-                  <%= u.text_field :password_confirmation,
+                  <%= u.input :password_confirmation,
                                     type: "password",
                                     label: false,
                                     autocomplete: "new-password", class:"form-control" %>
@@ -77,10 +68,9 @@
               <div class="row mb-2">
                 <div class="col-4">
                   <%= u.label "Téléphone" %>
-                  <abbr title="required">*</abbr>
                 </div>
                 <div class="col-8">
-                  <%= u.text_field :phone_number,
+                  <%= u.input :phone_number,
                               label: false,
                               autofocus: true,
                               class: "form-control", autocomplete: "tel-national"%>
@@ -94,7 +84,21 @@
                 <abbr title="required">*</abbr>
               </div>
               <div class="col-8">
-                <%= f.select  :speciality, Doctor::SPECIALITY,
+                <%= f.input  :speciality,
+                              collection: Doctor::SPECIALITY,
+                              label: false,
+                              autofocus: true,
+                              class:"form-control" %>
+              </div>
+            </div>
+
+            <div class="row mb-3 border-top pt-3">
+              <div class="col-4">
+                <%= f.label "Année d'expérience" %>
+                <abbr title="required">*</abbr>
+              </div>
+              <div class="col-8">
+                <%= f.input  :experience_year,
                               label: false,
                               autofocus: true,
                               class:"form-control" %>

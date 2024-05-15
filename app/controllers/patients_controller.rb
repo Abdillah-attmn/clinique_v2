@@ -23,6 +23,18 @@ class PatientsController < ApplicationController
     end
   end
 
+
+  def edit; end
+
+  def update
+    if @patient.update(patient_params)
+      @patient.user = @patient.user || User.new(params[:user])
+      redirect_to @patient, notice: 'Votre compte a bien été mis à jour.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_patient
@@ -30,7 +42,10 @@ class PatientsController < ApplicationController
   end
 
   def patient_params
-    params.require(:patient).permit(:gender, :birth_date, :address, :zipcode, :city)
+    params.require(:patient).permit(
+      :gender, :birth_date, :address, :zipcode, :city,
+      user_attributes: [:firstname, :lastname, :phone_number, :password, :email]
+      )
   end
 
   def authenticate_patient
