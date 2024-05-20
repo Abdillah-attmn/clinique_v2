@@ -1,5 +1,5 @@
 class Doctor < ApplicationRecord
-  SPECIALITY = ["cardiologue", "pediatre", "neurologue", "endocrinologue"]
+  SPECIALITY = ["cardiologue", "pediatre", "neurologue", "endocrinologue", "ophtamologue", "ORL"]
   has_one :user, as: :userable, dependent: :destroy
   accepts_nested_attributes_for :user
 

@@ -14,7 +14,7 @@ User.destroy_all
 
 2.times do
   Faker::Config.locale = 'fr'
-  doctor = Doctor.new(speciality: "cardiologie")
+  doctor = Doctor.new(speciality: Doctor::SPECIALITY.sample)
   doctor.save!
   User.create!(firstname: Faker::Name.first_name, lastname: Faker::Name.last_name,
                 email: Faker::Internet.email, password: "password", userable: doctor,
