@@ -1,7 +1,10 @@
 <div class="bg-white">
   <div class="container p-3">
     <div class="row justify-content-center clr">
-      <div class="border rounded col-12 col-sm-10 col-md-8 col-lg-5 p-5"><h2 class="text-center mb-30">Avez-vous déja un compte ?</h2>
+      <div class="border rounded col-12 col-sm-10 col-md-8 col-lg-5 p-5">
+        <header>
+          <h2 class="text-center mb-30">Avez-vous déja un compte ?</h2>
+        </header>
 
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-inputs">
@@ -39,7 +42,10 @@
       </div>
       <div class="border rounded col-12 col-sm-10 col-md-8 col-lg-5 p-5">
 
-        <div><h2 class="text-center mb-20">Ne perdez plus de temps et inscrivez-vous!</h2>
+        <div>
+          <header>
+            <h2 class="text-center mb-20">Ne perdez plus de temps et inscrivez-vous!</h2>
+          </header>
           <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
             <div class="row mb-20">
               <%= link_to "Docteur", new_doctor_path, class: "btn btn-clr-dr py-2" %>

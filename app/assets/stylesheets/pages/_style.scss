@@ -86,6 +86,12 @@ p.emerald {
   color: rgba($primary1, 0.47);
 }
 
+.box-shadow-clr{
+  border: 0.03375rem solid;
+  border-color: $primary1;
+  box-shadow: 5px 5px 5px rgba($primary1, 0.45);
+}
+
 .border-clr {
   border: 0.03375rem solid;
   border-color: $primary1;

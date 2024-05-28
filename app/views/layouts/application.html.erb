@@ -19,11 +19,9 @@
 
   </head>
 
-  <body>
-    <header>
-      <%= render "shared/flashes" %>
-      <%= render "shared/navbar" %>
-    </header>
+  <body data-controller="scroll-on-click">
+    <%= render "shared/flashes" %>
+    <%= render "shared/navbar" %>
     <main class="flex-grow">
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>

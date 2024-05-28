@@ -1,5 +1,5 @@
 <!-- slider section -->
-<section class="swiper">
+<section data-controller="slide" class="swiper">
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
@@ -96,7 +96,7 @@
 
 <section class="about_section layout_padding">
   <div class="container">
-    <div class="row">
+    <div class="row" data-scroll-on-click-target="about">
       <div class="col-md-6 ">
         <div class="img-box">
           <%= image_tag "about-img.jpg", alt:""%>
@@ -127,7 +127,7 @@
 <!-- contact section -->
 <section class="contact_section layout_padding-bottom">
   <div class="container">
-    <div class="heading_container">
+    <div class="heading_container" data-scroll-on-click-target="contact">
       <h2>
         Envoyez un message
       </h2>
@@ -193,7 +193,7 @@
 
 <!-- treatment section -->
 
-<section class="treatment_section layout_padding">
+<section data-scroll-on-click-target="treatment" class="treatment_section layout_padding">
   <div class="side_img">
     <%= image_tag "treatment-side-img.jpg", alt:"" %>
   </div>

@@ -32,9 +32,16 @@
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <%= link_to "Home", root_path, class: "bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" %>
-            <%= link_to "About", "/about", class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
+            <% if current_page?('/') %>
+              <button data-action="click->scroll-on-click#propos" class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</button>
+              <button data-action="click->scroll-on-click#contact", class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact Us</button>
+              <button data-action="click->scroll-on-click#details", class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Treatment</button>
+            <%# else %>
+              <%#= link_to "About", root_path, data: {action:"click->scroll-on-click#propos"}, class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
+              <%#= link_to "Contact Us", root_path, data: {action:"click->scroll-on-click#contact"}, class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
+              <%#= link_to "Treatment", root_path, data: {action:"click->scroll-on-click#details"}, class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
+            <% end %>
             <%= link_to "Doctors", doctors_path, class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
-            <%= link_to "Contact Us", "/contact", class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
           </div>
         </div>
       </div>
@@ -84,10 +91,11 @@
   <div class="sm:hidden" id="mobile-menu">
     <div class="space-y-1 px-2 pb-3 pt-2">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+      <%= link_to "Home", root_path, class: "bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" %>
+      <%= link_to "About", "#", data: {action:"click->scroll-on-click#propos"}, class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
+      <%= link_to "Doctors", doctors_path, class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
+      <%= link_to "Contact Us", "#", data: {action:"click->scroll-on-click#contact"}, class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
+      <%= link_to "Treatment", "#", data: {action:"click->scroll-on-click#details"}, class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
     </div>
   </div>
 </nav>
