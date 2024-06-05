@@ -12,7 +12,7 @@ Doctor.destroy_all
 Patient.destroy_all
 User.destroy_all
 
-2.times do
+7.times do
   Faker::Config.locale = 'fr'
   doctor = Doctor.new(speciality: Doctor::SPECIALITY.sample)
   doctor.save!

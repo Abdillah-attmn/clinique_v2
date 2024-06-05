@@ -5,6 +5,13 @@ class DoctorsController < ApplicationController
 
   def index
     @doctors = Doctor.all
+    unless params[:query].nil?
+      sql_subquery = <<~SQL
+      doctors.speciality ILIKE :query
+      OR users.lastname ILIKE :query
+      SQL
+      @doctors = @doctors.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def show;end
