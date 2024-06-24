@@ -31,13 +31,16 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <%= link_to "Home", root_path, class: "bg-gray-900 text-white rounded-md px-3 py-2 text-base font-medium" %>
+            <%= link_to "Home", root_path, class: "flex items-center justify-center bg-gray-900 text-white rounded-md px-3 py-2 text-base font-medium" %>
             <% if current_page?('/') %>
-              <button data-action="click->scroll-on-click#propos" class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">About</button>
-              <button data-action="click->scroll-on-click#contact", class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Contact Us</button>
-              <button data-action="click->scroll-on-click#details", class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Treatment</button>
+              <button data-action="click->scroll-on-click#propos" class="flex items-center justify-center text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">About</button>
+              <button data-action="click->scroll-on-click#contact", class="flex items-center justify-center text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Contact Us</button>
+              <button data-action="click->scroll-on-click#details", class="flex items-center justify-center text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Treatment</button>
             <% end %>
-            <%= link_to "Doctors", doctors_path, class: "text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium" %>
+            <%= link_to "Doctors", doctors_path, class: "flex items-center justify-center text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium" %>
+            <% if user_signed_in? && current_user.userable_type == 'Doctor' %>
+              <%= link_to "Mes Patients", patients_path, class: "flex items-center justify-center text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -76,14 +79,14 @@
   <!-- Mobile menu, show/hide based on menu state. -->
   <div class="hidden" id="mobile-menu" data-menu-target="menu">
     <div class="space-y-1 px-2 pb-3 pt-2">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <%= link_to "Home", root_path, class: "flex flex-col bg-gray-900 text-white rounded-md px-3 py-2 text-base font-medium", aria: {current: "page"} %>
+
+      <%= link_to "Home", root_path, class: "flex flex-col items-center bg-gray-900 text-white rounded-md px-3 py-2 text-base font-medium", aria: {current: "page"} %>
       <% if current_page?('/') %>
-        <button data-action="click->scroll-on-click#propos" class="flex flex-col text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">About</button>
-        <button data-action="click->scroll-on-click#contact", class="flex flex-col text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Contact Us</button>
-        <button data-action="click->scroll-on-click#details", class="flex flex-col text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Treatment</button>
+        <button data-action="click->scroll-on-click#propos" class="flex flex-col items-center text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">About</button>
+        <button data-action="click->scroll-on-click#contact", class="flex flex-col items-center text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Contact Us</button>
+        <button data-action="click->scroll-on-click#details", class="flex flex-col items-center text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium">Treatment</button>
       <% end %>
-      <%= link_to "Doctors", doctors_path, class: "flex flex-col text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium" %>
+      <%= link_to "Doctors", doctors_path, class: "flex flex-col items-center text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-base font-medium" %>
     </div>
   </div>
 </nav>

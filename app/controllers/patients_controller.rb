@@ -1,7 +1,12 @@
 class PatientsController < ApplicationController
-  before_action :authenticate_user!, :authenticate_patient, except: %i[new create show]
+  before_action :authenticate_user!, :authenticate_patient, except: %i[index new create show]
   before_action :new_registration, only: %i[new create]
-  before_action :set_patient, only: %i[show]
+  before_action :set_patient, only: %i[show edit update]
+
+  # GET patients/
+  def index
+    @patients = Patient.all
+  end
 
   # GET patient/:id
   def show; end

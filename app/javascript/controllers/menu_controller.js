@@ -10,19 +10,17 @@ export default class extends Controller {
 
   toggle() {
     this.isOpen = !this.isOpen;
-    this.toogleMenu();
+    this.updateMenuState();
   }
 
-  toogleMenu() {
-    if (window.innerWidth < 640) {
+  updateMenuState() {
+    if (window.innerWidth < 640) { // Tailwind's sm breakpoint
       this.menuTarget.style.display = this.isOpen ? "block" : "none";
       this.openIconTarget.classList.toggle("hidden", this.isOpen);
-      this.openIconTarget.classList.toggle('block', !this.isOpen);
       this.closeIconTarget.classList.toggle("hidden", !this.isOpen);
-      this.closeIconTarget.classList.toggle('block', this.isOpen)
       this.element.querySelector("button").setAttribute("aria-expanded", this.isOpen);
     } else {
-      this.menuTarget.style.display = "none";
+      this.menuTarget.style.display = "none"; // Ensure it's hidden on larger screens
     }
   }
 }

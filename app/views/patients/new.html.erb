@@ -17,7 +17,7 @@
 
           <div class="form-inputs">
 
-            <%= f.fields_for :user_attributes, @patient.user||User.new do |u| %>
+            <%= f.fields_for :user_attributes, @patient.user || User.new do |u| %>
               <div class="row mb-3">
                 <div class="col-6">
                   <%= u.label "Prénom" %>

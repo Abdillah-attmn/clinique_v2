@@ -74,6 +74,20 @@
               </div>
             </div>
 
+
+            <div class="row mb-2">
+              <div class="col-4">
+                <%= f.label "Photo" %>
+                <abbr title="required">*</abbr>
+              </div>
+              <div class="col-8">
+                <%= f.input :photo, as: :file,
+                            label: false,
+                            autofocus: true,
+                            class: "form-control" %>
+              </div>
+            </div>
+
           <div class="form-actions">
             <%= f.submit "S'inscrire" %>
           </div>
